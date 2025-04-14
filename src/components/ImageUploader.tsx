@@ -5,64 +5,27 @@ import { Upload } from "lucide-react";
 
 interface ImageUploaderProps {
   onImageUploaded: (imageUrl: string) => void;
+  disabled?: boolean;
 }
 
-export const ImageUploader = ({ onImageUploaded }: ImageUploaderProps) => {
+export const ImageUploader = ({ onImageUploaded, disabled = false }: ImageUploaderProps) => {
   const [isDragging, setIsDragging] = useState(false);
   const fileInputRef = useRef<HTMLInputElement>(null);
 
-  // Handle file selection
-  const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const file = event.target.files?.[0];
-    if (file) {
-      processFile(file);
-    }
-  };
-
-  // Process the file and create a local URL
-  const processFile = (file: File) => {
-    if (file.type.startsWith("image/")) {
-      const reader = new FileReader();
-      reader.onload = (e) => {
-        if (e.target?.result) {
-          onImageUploaded(e.target.result as string);
-        }
-      };
-      reader.readAsDataURL(file);
-    } else {
-      alert("Please upload an image file");
-    }
-  };
-
-  // Handle drag and drop events
+  // Prevent any file handling if disabled
+  const handleFileChange = () => {};
   const handleDragOver = (e: React.DragEvent<HTMLDivElement>) => {
     e.preventDefault();
-    setIsDragging(true);
   };
-
-  const handleDragLeave = () => {
-    setIsDragging(false);
-  };
-
+  const handleDragLeave = () => {};
   const handleDrop = (e: React.DragEvent<HTMLDivElement>) => {
     e.preventDefault();
-    setIsDragging(false);
-    
-    if (e.dataTransfer.files.length) {
-      processFile(e.dataTransfer.files[0]);
-    }
   };
-
-  // Trigger file input click
-  const handleSelectClick = () => {
-    if (fileInputRef.current) {
-      fileInputRef.current.click();
-    }
-  };
+  const handleSelectClick = () => {};
 
   return (
     <div 
-      className={`w-full ${isDragging ? 'bg-blue-100' : ''}`}
+      className={`w-full ${disabled ? 'opacity-50 cursor-not-allowed' : ''}`}
       onDragOver={handleDragOver}
       onDragLeave={handleDragLeave}
       onDrop={handleDrop}
@@ -73,12 +36,14 @@ export const ImageUploader = ({ onImageUploaded }: ImageUploaderProps) => {
         onChange={handleFileChange}
         accept="image/*"
         className="hidden"
+        disabled={disabled}
       />
       
       <Button 
         variant="outline" 
         onClick={handleSelectClick}
-        className="flex items-center gap-2 text-sm border-blue-300 text-blue-600 hover:bg-blue-50"
+        disabled={disabled}
+        className="flex items-center gap-2 text-sm border-blue-300 text-blue-600 hover:bg-blue-50 opacity-50 cursor-not-allowed"
       >
         <Upload size={16} />
         Upload Image
